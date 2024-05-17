@@ -22,7 +22,7 @@ print(df3.head())
 
 df3.plot.scatter('Datum', # x-axis
                 'Temperatur', # y-axis
-                grid=True, # Add a grid in the background
+                grid=False, # Add a grid in the background
                )
 plt.show()
 
