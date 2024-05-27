@@ -30,3 +30,12 @@ plt.xlabel('Temperatur')
 plt.ylabel('Durchschnittlicher Umsatz')
 plt.legend()
 plt.show()
+
+
+
+import statsmodels.formula.api as smf
+
+# Fit the linear model
+mod = smf.ols('Umsatz ~ Temperatur + C(Warengruppe)', data=merged_df).fit()
+# Print the summary
+print(mod.summary())
