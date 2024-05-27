@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+# from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LinearRegression
+# from sklearn.metrics import mean_squared_error, r2_score
 
 # Import Datamerge
 from Datamerge import merged_df
@@ -39,3 +39,17 @@ import statsmodels.formula.api as smf
 mod = smf.ols('Umsatz ~ Temperatur + C(Warengruppe)', data=merged_df).fit()
 # Print the summary
 print(mod.summary())
+
+
+# Erstellen des Scatterplots und der Regressionslinie für jede Warengruppe
+for warengruppe in merged_df['Warengruppe'].unique():
+    data = merged_df[merged_df['Warengruppe'] == warengruppe]
+    plt.scatter(data['Temperatur'], data['Umsatz'], label=warengruppe)
+    # Vorhersagen des Modells für die aktuelle Warengruppe
+    data['Vorhersage'] = mod.predict(data)
+    plt.plot(data['Temperatur'], data['Vorhersage'], color='red')
+
+plt.xlabel('Temperatur')
+plt.ylabel('Umsatz')
+plt.legend()
+plt.show()
