@@ -14,6 +14,14 @@ df = merged_df
 # Berechnen des Umsatzes je Warengruppe
 umsatz_je_warengruppe = df.groupby('Warengruppe')['Umsatz'].sum()
 
+
+# Berechnen der Anzahl der Dateneinträge für den Umsatz jeder Warengruppe
+anzahl_umsatz_je_warengruppe = df.groupby('Warengruppe')['Umsatz'].count()
+
+# Ausgabe der Ergebnisse
+print(anzahl_umsatz_je_warengruppe)
+
+
 # Ausgabe des Ergebnisses
 print(umsatz_je_warengruppe)
 
