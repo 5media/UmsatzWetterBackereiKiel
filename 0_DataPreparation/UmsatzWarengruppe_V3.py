@@ -11,6 +11,8 @@ from Datamerge_local import merged_df
 # Einlesen der merged-Datei 
 df = merged_df
 
+# -------------------------------------------------------------------------
+
 # Berechnen des Umsatzes je Warengruppe
 umsatz_je_warengruppe = df.groupby('Warengruppe')['Umsatz'].sum()
 
@@ -21,9 +23,15 @@ anzahl_umsatz_je_warengruppe = df.groupby('Warengruppe')['Umsatz'].count()
 # Ausgabe der Ergebnisse
 print(anzahl_umsatz_je_warengruppe)
 
+# -------------------------------------------------------------------------
 
 # Ausgabe des Ergebnisses
 print(umsatz_je_warengruppe)
+
+# -------------------------------------------------------------------------
+
+
+# -------------------------------------------------------------------------
 
 
 # Berechnen des durchschnittlichen Umsatzes je Temperatur und Warengruppe
@@ -48,6 +56,7 @@ mod = smf.ols('Umsatz ~ Temperatur + C(Warengruppe)', data=merged_df).fit()
 # Print the summary
 print(mod.summary())
 
+# -------------------------------------------------------------------------
 
 # Erstellen des Scatterplots und der Regressionslinie für jede Warengruppe
 for warengruppe in merged_df['Warengruppe'].unique():
@@ -61,3 +70,6 @@ plt.xlabel('Temperatur')
 plt.ylabel('Umsatz')
 plt.legend()
 plt.show()
+
+
+# -------------------------------------------------------------------------
