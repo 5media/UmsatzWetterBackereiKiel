@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # from sklearn.metrics import mean_squared_error, r2_score
 
 # Import Datamerge
-from Datamerge import merged_df
+from Datamerge_local import merged_df
 
 # Einlesen der merged-Datei 
 df = merged_df
