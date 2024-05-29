@@ -24,7 +24,14 @@ merged_df = pd.merge(df1, df2, on='Datum')
 merged_df = pd.merge(merged_df, df3, on='Datum')
 
 # Print the resulting merged DataFrame
-print(merged_df)
+print(merged_df.shape)
+
+print(df1.shape)
+print(df2.shape)
+print(df3.shape)
+
+
+
 
 # Variablen erstellen
 
