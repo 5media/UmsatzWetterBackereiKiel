@@ -11,6 +11,12 @@ df = merged_df
 
 # print (merged_df.head())
 
+# Ermitteln der Gesamtzahl der Daten
+gesamtzahl_daten = df.shape[0]
+
+# Ausgabe der Ergebnisse
+print('Gesamtzahl der Daten:', gesamtzahl_daten)
+
 
 # ------------------------------------------
 

@@ -17,3 +17,14 @@ merged_df = pd.merge(umsatz_df, kiwo_df, on='Datum', how='inner')
 merged_df = pd.merge(merged_df, wetter_df, on='Datum', how='inner')
 
 
+print(merged_df.head())
+print(merged_df.shape)
+print(merged_df.columns)
+
+
+# Ändern der Anzeigeoptionen
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
+# Anzeigen der gesamten Tabelle
+print(merged_df)
