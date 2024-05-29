@@ -12,7 +12,9 @@ df = merged_df
 # -------------------------------------------------------------------------
 
 print ('Scatterplot Temperatur Umsatz Warengruppen')
-sns.scatterplot(x='Temperatur', y='Umsatz', data=df, hue='Warengruppe')
+sns.scatterplot(x='Temperatur', y='Umsatz', data=df, hue='Warengruppe', palette='bright')
+
+
 plt.show()
 
 
@@ -60,7 +62,9 @@ ols_model.fit(xs, ys)
 # Ausgabe der Koeffizienten und des Achsenabschnitts
 print('Koeffizienten:', ols_model.coef_)
 print('Achsenabschnitt:', ols_model.intercept_)
+print ('\n')
 
+print ('Scatterplot Linear Regression')
 # Erstellen des Scatterplots
 plt.scatter(xs, ys, color='blue')
 plt.plot(xs, ols_model.predict(xs), color='red')
