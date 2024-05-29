@@ -158,3 +158,12 @@ plt.show()
 print(df.shape)
 
 
+# ------------------------------------------
+
+import statsmodels.formula.api as smf
+
+# Fit the linear model
+mod = smf.ols('Umsatz ~ C(TemperaturGruppe) + C(WindGruppe) +C(BewoelkungsGruppe) + C(Warengruppe)', data=merged_df).fit()
+# Print the summary
+print(mod.summary())
+
