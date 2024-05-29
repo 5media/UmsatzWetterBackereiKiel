@@ -153,5 +153,8 @@ sns.barplot(data=df, x='Wettercode', y='Umsatz', estimator=sum, ci=None)
 plt.show()
 
 
+# ------------------------------------------
+
+print(df.shape)
 
 
