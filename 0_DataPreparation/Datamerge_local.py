@@ -26,5 +26,3 @@ print(merged_df.columns)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
-# Anzeigen der gesamten Tabelle
-print(merged_df)
