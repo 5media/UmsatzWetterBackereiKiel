@@ -65,10 +65,23 @@ min_wind = df['Windgeschwindigkeit'].min()
 print('Maximaler Wind:', max_wind)
 print('Minimaler Wind:', min_wind)
 
+# Erstellen des Balkendiagramms
+plt.figure(figsize=(10, 6))
+sns.barplot(data=df, x='Windgeschwindigkeit', y='Umsatz', estimator=sum, ci=None)
+
+# Anzeigen des Plots
+plt.show()
+
+# Erstellen der Windgruppen alt
+#bins = [5, 10, 15, 20]
+#labels = ['5-10', '10-15', '15-20']
+#df['WindGruppe'] = pd.cut(df['Windgeschwindigkeit'], bins=bins, labels=labels, include_lowest=True)
+
 # Erstellen der Windgruppen
-bins = [5, 10, 15, 20]
-labels = ['5-10', '10-15', '15-20']
+bins = [2, 5, 16, 35]
+labels = ['3-5', '6-16', '17-35']
 df['WindGruppe'] = pd.cut(df['Windgeschwindigkeit'], bins=bins, labels=labels, include_lowest=True)
+
 
 # Ausgabe der ersten Zeilen des DataFrame
 # print(df.head())
@@ -101,25 +114,20 @@ plt.show()
 
 
 # Erstellen der Bewölkungsgruppen
-bins = [-np.inf, 4, 7, np.inf]
-labels = ['0-4', '5-7', '8']
-df['BewoelkungsGruppe'] = pd.cut(df['Bewoelkung'], bins=bins, labels=labels, include_lowest=True)
-
+# bins = [-np.inf, 4, 7, np.inf]
+# labels = ['0-4', '5-7', '8']
+# df['BewoelkungsGruppe'] = pd.cut(df['Bewoelkung'], bins=bins, labels=labels, include_lowest=True)
 # Ausgabe der ersten Zeilen des DataFrame
 # print(df.head())
-
 # Summieren des Umsatzes für jede Bewölkungsgruppe
-umsatz_je_bewoelkungsgruppe = df.groupby('BewoelkungsGruppe')['Umsatz'].sum()
-
+# umsatz_je_bewoelkungsgruppe = df.groupby('BewoelkungsGruppe')['Umsatz'].sum()
 # Ausgabe der Ergebnisse
 #print(umsatz_je_bewoelkungsgruppe)
-
 # Erstellen des Balkendiagramms
-plt.figure(figsize=(10, 6))
-sns.barplot(data=df, x='BewoelkungsGruppe', y='Umsatz', estimator=sum, ci=None)
-
+#plt.figure(figsize=(10, 6))
+#sns.barplot(data=df, x='BewoelkungsGruppe', y='Umsatz', estimator=sum, ci=None)
 # Anzeigen des Plots
-plt.show()
+#plt.show()
 
 
 
@@ -129,14 +137,14 @@ plt.show()
 umsatz_je_wettercode = df.groupby('Wettercode')['Umsatz'].sum()
 
 # Ausgabe der Ergebnisse
-print(umsatz_je_wettercode)
+# print(umsatz_je_wettercode)
 
 
 # Zählen der Daten für jeden Wettercode
 daten_je_wettercode = df.groupby('Wettercode').size()
 
 # Ausgabe der Ergebnisse
-print(daten_je_wettercode)
+# print(daten_je_wettercode)
 
 # Ermitteln der Gesamtzahl der Daten
 gesamtzahl_daten = df.shape[0]
@@ -153,6 +161,23 @@ sns.barplot(data=df, x='Wettercode', y='Umsatz', estimator=sum, ci=None)
 plt.show()
 
 
+# Definieren Sie die Gruppen
+wettercode_gruppe1 = [0, 5, 10, 21, 61, 63]
+
+# Erstellen Sie eine neue Spalte 'WettercodeGruppe'
+df['WettercodeGruppe'] = df['Wettercode'].apply(lambda x: 'Gruppe1' if x in wettercode_gruppe1 else 'Rest')
+
+# erstellen eines Balkendiagramms
+plt.figure(figsize=(10, 6))
+sns.barplot(data=df, x='WettercodeGruppe', y='Umsatz', estimator=sum, ci=None)
+
+# Anzeigen des Plots
+plt.show()
+
+
+# print (df.WettercodeGruppe)
+
+
 # ------------------------------------------
 
 print(df.shape)
@@ -163,7 +188,8 @@ print(df.shape)
 import statsmodels.formula.api as smf
 
 # Fit the linear model
-mod = smf.ols('Umsatz ~ C(TemperaturGruppe) + C(WindGruppe) +C(BewoelkungsGruppe) + C(Warengruppe)', data=merged_df).fit()
+mod = smf.ols('Umsatz ~ C(TemperaturGruppe) + C(WindGruppe) +C(Bewoelkung) + C(Warengruppe) +C(WettercodeGruppe)', data=merged_df).fit()
 # Print the summary
 print(mod.summary())
+
 
