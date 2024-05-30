@@ -13,8 +13,8 @@ kiwo_df['Datum'] = pd.to_datetime(kiwo_df['Datum'])
 wetter_df['Datum'] = pd.to_datetime(wetter_df['Datum'])
 
 # Mergen
-merged_df = pd.merge(umsatz_df, kiwo_df, on='Datum', how='inner')
-merged_df = pd.merge(merged_df, wetter_df, on='Datum', how='inner')
+merged_df = pd.merge(umsatz_df, kiwo_df, on='Datum', how='left')
+merged_df = pd.merge(merged_df, wetter_df, on='Datum', how='left')
 
 
 # print(merged_df.head())
@@ -26,3 +26,5 @@ merged_df = pd.merge(merged_df, wetter_df, on='Datum', how='inner')
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
 
+
+print(merged_df.shape)
