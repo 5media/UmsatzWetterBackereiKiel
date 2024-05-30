@@ -17,9 +17,9 @@ merged_df = pd.merge(umsatz_df, kiwo_df, on='Datum', how='inner')
 merged_df = pd.merge(merged_df, wetter_df, on='Datum', how='inner')
 
 
-print(merged_df.head())
-print(merged_df.shape)
-print(merged_df.columns)
+# print(merged_df.head())
+# print(merged_df.shape)
+# print(merged_df.columns)
 
 
 # Ändern der Anzeigeoptionen
