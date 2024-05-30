@@ -9,10 +9,15 @@ from Datamerge_local import merged_df
 # Einlesen der merged-Datei 
 df = merged_df
 
-# print (merged_df.head())
 
 # Einlesen Kreuzfahrerdaten
-df_kreuzfahrer = pd.read_csv('kiel_passagiere_kreuzfahrten.csv')
+df_kreuzfahrer = pd.read_csv('kiel_kreuzfahrer.csv')
 
-# print (df_kreuzfahrer.head())
+print (df_kreuzfahrer.head())
+
+df_kreuzfahrer['Jahr'] = pd.to_datetime(df_kreuzfahrer['Jahr'], format='%Y')
+
+
+print (df_kreuzfahrer)
+
 
