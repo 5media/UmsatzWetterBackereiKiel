@@ -57,25 +57,52 @@ sns.lineplot(data=df_2018, x='Monat', y='Umsatz', label='2018')
 
 
 # Anzeigen des Plots
-plt.show()
+# plt.show()
 
 # ------------------------------------------
 
-# Angenommen, Sie haben einen DataFrame namens df, der die Spalten 'Umsatz' und 'Jahr' enthält
-df_sum = df.groupby('Jahr')['Umsatz'].sum()
 
-print(df_sum)
 
-# Erstellen des Balkendiagramms
+
+# Erstellen Sie eine Funktion, die das Geschäftsjahr1 basierend auf dem Monat und Jahr berechnet
+def berechne_geschaeftsjahr(row):
+    if (row['Jahr'] == 2013 and row['Monat'] >= 7) or (row['Jahr'] == 2014 and row['Monat'] <= 6):
+        return '2013/14'
+    else:
+        if (row['Jahr'] == 2014 and row['Monat'] >= 7) or (row['Jahr'] == 2015 and row['Monat'] <= 6):
+            return '2014/15'
+        else:
+            if (row['Jahr'] == 2015 and row['Monat'] >= 7) or (row['Jahr'] == 2016 and row['Monat'] <= 6):
+                return '2015/16'
+            else:
+                if (row['Jahr'] == 2016 and row['Monat'] >= 7) or (row['Jahr'] == 2017 and row['Monat'] <= 6):
+                    return '2016/17'
+                else:
+                    if (row['Jahr'] == 2017 and row['Monat'] >= 7) or (row['Jahr'] == 2018 and row['Monat'] <= 6):
+                        return '2017/18'
+                    else:
+                        return 'sonstiges'
+
+# Erstellen Sie die Geschaeftsjahr1 Spalte
+df_sum['Geschaeftsjahr'] = df_sum.apply(berechne_geschaeftsjahr, axis=1)
+
+
+# print(df_sum.head(50))
+
+# Erstellen des Liniendiagramms
 plt.figure(figsize=(12, 6))
-sns.barplot(x=df_sum.index, y=df_sum.values)
+sns.lineplot(data=df_sum, x='Monat', y='Umsatz', hue='Geschaeftsjahr')
 
 # Anzeigen des Plots
-plt.show()
+# plt.show()
 
 # ------------------------------------------
 
+# Summieren Sie den Umsatz für das Geschäftsjahr 2013/14
+umsatz_2013_14 = df_sum.loc[df_sum['Geschaeftsjahr'] == '2013/14', 'Umsatz'].sum()
 
+# Ausgeben der Summe des Umsatzes für das Geschäftsjahr 2013/14
+print(umsatz_2013_14)
 
 
 
