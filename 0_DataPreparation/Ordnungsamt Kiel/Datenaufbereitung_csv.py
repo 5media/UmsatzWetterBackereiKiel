@@ -18,6 +18,7 @@ df_Passagieraufkommen = pd.read_csv(Passagieraufkommen_csv)
 # Zeige die Spaltenüberschriften an
 print(df_Passagieraufkommen.columns)
 
+# Auffüllen der fehlenden Werte für das Jahr 1989 mit den Werten aus dem Jahr 1990 (Anzahl der Kreuzfahrtschiffe)
 columns_to_replace = ['pas_kreuzfahrt_absolut', 'pas_kreuzfahrt_relativ', 'anzahl_Kreuzfahrtschiff_absolut']
 df_Passagieraufkommen.loc[0, columns_to_replace] = df.loc[1, columns_to_replace].values
 
