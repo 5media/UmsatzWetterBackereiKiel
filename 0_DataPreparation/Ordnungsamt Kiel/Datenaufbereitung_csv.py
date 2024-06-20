@@ -2,14 +2,19 @@ import pandas as pd
 
 # Pfad zur Excel-Datei
 Passagieraufkommen = ('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/Passagieraufkommen_bis-2019_neu.xlsx')
+Ankuenfte_Monat = ('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/Ankünfte_Monat_bis-2019_neu.xlsx')
 
 # Lese die Excel-Datei ein
 df_Passagieraufkommen = pd.read_excel(Passagieraufkommen)
+df_Ankuenfte_Monat = pd.read_excel(Ankuenfte_Monat)
 
 # Speichere DataFrame als CSV-Datei
 pfad_zum_repo_ordner = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV' # Pfad zu deinem GitHub-Repository-Ordner
 csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Passagieraufkommen.csv'
 df_Passagieraufkommen.to_csv(csv_datei, index=False)
+csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Ankuenfte_Monat.csv'
+df_Ankuenfte_Monat.to_csv(csv_datei, index=False)
+
 
 ## Überprüfung der CSV-Datei
 # Pfad zur CSV-Datei
