@@ -3,10 +3,12 @@ import pandas as pd
 # Pfad zur Excel-Datei [alle Dateien]
 Passagieraufkommen = ('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/Passagieraufkommen_bis-2019_neu.xlsx')
 Ankuenfte_Monat = ('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/Ankünfte_Monat_bis-2019_neu.xlsx')
+Fremdenverkehr =  ('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/Fremdenverkehr_ingesamt_bis-2019_neu.xlsx')
 
 # Lese die Excel-Datei ein [alle Dateien]
 df_Passagieraufkommen = pd.read_excel(Passagieraufkommen)
 df_Ankuenfte_Monat = pd.read_excel(Ankuenfte_Monat)
+df_Fremdenverkehr = pd.read_excel(Fremdenverkehr)
 
 # Speichere DataFrame als CSV-Datei [alle Dateien]
 pfad_zum_repo_ordner = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV' # Pfad zu deinem GitHub-Repository-Ordner
@@ -14,6 +16,8 @@ csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt 
 df_Passagieraufkommen.to_csv(csv_datei, index=False)
 csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Ankuenfte_Monat.csv'
 df_Ankuenfte_Monat.to_csv(csv_datei, index=False)
+csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Fremdenverkehr.csv'
+df_Fremdenverkehr.to_csv(csv_datei, index=False)
 
 ## Ankuenfte_Monat
 # Zeige die letzten Zeilen des DataFrames an, um zu sehen, welche Zeilen gelöscht werden sollen
