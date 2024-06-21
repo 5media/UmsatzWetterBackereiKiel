@@ -31,10 +31,18 @@ for _, row in fremdenverkehr_var2.iterrows():
             'uebernachtungen': row['uebernachtungen'] / num_days
         })
 
-# Erstellen eines neuen DataFrame mit den täglichen Daten
+# 4. Erstellen eines neuen DataFrame mit den täglichen Daten
 fremdenverkehr_var2_daily = pd.DataFrame(all_data)
 
-# Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
+# 5. Anzeigen der ersten Zeilen des neuen DataFrames zur Überprüfung
+print("Erste Zeilen der transformierten Daten:")
+print(fremdenverkehr_var2_daily.head())
+
+# 6. Löschen aller Zeilen ab Datum '2019-08-01' [da außerhalb des Zeitraums]
+datum_zum_loeschen = '2019-08-01'
+fremdenverkehr_var2_daily = fremdenverkehr_var2_daily[fremdenverkehr_var2_daily['Datum'] < datum_zum_loeschen]
+
+# 7. Speichern des aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
 pfad_zur_ausgabedatei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/Fremdenverkehr_Var2_daily.csv'
 fremdenverkehr_var2_daily.to_csv(pfad_zur_ausgabedatei, index=False)
 
