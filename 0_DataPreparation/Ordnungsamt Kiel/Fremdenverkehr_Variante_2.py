@@ -35,7 +35,7 @@ for _, row in fremdenverkehr_var2.iterrows():
 fremdenverkehr_var2_daily = pd.DataFrame(all_data)
 
 # Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
-pfad_zur_ausgabedatei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/Fremdenverkehr_Var2_Tagesdaten.csv'
+pfad_zur_ausgabedatei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/Fremdenverkehr_Var2_daily.csv'
 fremdenverkehr_var2_daily.to_csv(pfad_zur_ausgabedatei, index=False)
 
 
