@@ -33,3 +33,9 @@ for index, row in ankuenfte.iterrows():
 # Anzeige des Ergebnisses
 print("\nTransformierte Daten:")
 print(ankuenfte_daily.head())
+
+# Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
+aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Ankuenfte_daily.csv'
+ankuenfte_daily.to_csv(aktualisierte_csv_datei, index=False)
+
+## Ermitteln des Einflusses der Ankuenfte auf den Umsatz
