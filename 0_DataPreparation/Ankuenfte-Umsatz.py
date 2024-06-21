@@ -17,11 +17,22 @@ ankuenfte = ankuenfte[['Jahr', 'Monat', 'Ankuenfte_ins_absolut', 'uebernachtunge
 # Berechnen des monatlichen Mittelwerts für Ankuenfte und Übernachtungen
 ankuenfte_grouped = ankuenfte.groupby(['Jahr', 'Monat']).mean().reset_index()
 
+print(ankuenfte_grouped.dtypes)
+print(ankuenfte_grouped[['Jahr', 'Monat']].head())
+
 # Erstellen einer neuen Spalte 'Datum' mit dem ersten Tag des Monats
-ankuenfte_grouped['Datum'] = pd.to_datetime(ankuenfte_grouped[['Jahr', 'Monat']].assign(Ta=1).rename(columns={'Ta': 'day'}))
+ankuenfte_grouped['Datum'] = pd.to_datetime(ankuenfte_grouped[['Jahr', 'Monat']].assign(day=1))
+
+# Direkte Angabe des Datums mit Jahr, Monat und Tag
+# ankuenfte_grouped['Datum'] = pd.to_datetime(ankuenfte_grouped[['Jahr', 'Monat']].assign(Tag=1))
+# Hier haben wir 'Tag' als zusätzliche Spalte angegeben, um Pandas mitzuteilen, wie das Datum zusammengesetzt werden soll.
+
+# Kombinieren von Jahr und Monat zu einem Datum im ersten Tag des Monats
+# ankuenfte_grouped['Datum'] = pd.to_datetime(ankuenfte_grouped[['Jahr', 'Monat']].assign(day=1))
+# Hier wird standardmäßig der erste Tag des Monats genommen, was in den meisten Fällen korrekt ist.
 
 # Wiederholen der Werte für jeden Tag im Monat
-#ankuenfte_daily = ankuenfte_grouped.set_index('Datum').resample('D').ffill().reset_index()
+# ankuenfte_daily = ankuenfte_grouped.set_index('Datum').resample('D').ffill().reset_index()
 
 # Anzeigen der umgeformten Daten
 # print(ankuenfte_daily.head())
