@@ -43,5 +43,5 @@ datum_zum_loeschen = '2019-08-01'
 passagieraufkommen_daily = passagieraufkommen_daily[passagieraufkommen_daily['Datum'] < datum_zum_loeschen]
 
 # Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
-aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Passagieraufkommen_daily_.csv'
+aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Passagieraufkommen_daily.csv'
 passagieraufkommen_daily.to_csv(aktualisierte_csv_datei, index=False)

@@ -44,7 +44,7 @@ print("Erste Zeilen der transformierten Daten:")
 print(tagesdaten.head())
 
 # Speichern der neuen Daten als CSV-Datei
-pfad_zur_ausgabedatei = 'Passagieraufkommen_Tagesdaten_bereinigt.csv'
+pfad_zur_ausgabedatei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/Passagieraufkommen_Tagesdaten_bereinigt.csv'
 tagesdaten.to_csv(pfad_zur_ausgabedatei, index=False)
 
 print(f"Aktualisierte Daten wurden in '{pfad_zur_ausgabedatei}' gespeichert.")
