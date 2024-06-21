@@ -1,29 +1,41 @@
 import pandas as pd
-import numpy as np
 
 # Einlesen der CSV-Dateien
-pfad_zum_repo_ordner = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/'
 umsatzdaten = pd.read_csv('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/umsatzdaten_gekuerzt.csv')
-pfad_zum_repo_ordner = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV'
 ankuenfte = pd.read_csv('/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/Ankuenfte_Monat_neu.csv')
 
-# Anzeigen der ersten Zeilen beider Datensätze
-umsatzdaten.head(), ankuenfte.head()
-print(umsatzdaten.head(), ankuenfte.head())
-print("Umsatzdaten:")
-print(umsatzdaten.head())
-print("\nAnkuenfte:")
+
+## Bearbeiten der Datei Ankuenfte - Variante Durchschnittswert Ankuenfte pro Tag 
+
+# Anzeigen der ersten Zeilen
+print("Erste Zeilen der Daten:")
 print(ankuenfte.head())
 
-# 1. Auswahl der relevanten Spalten
-relevant_df_ankuenfte = ankuenfte[['Jahr', 'Monat', 'Ankuenfte_ins_absolut', 'uebernachtungen_ins_absolut']]
+# 1. Auswahl der relevanten Spalten und Erstellen des Datums
+ankuenfte['Datum'] = pd.to_datetime(ankuenfte[['Jahr', 'Monat']].astype(str).apply('-'.join, 1) + '-01')
 
-# 2. Tagesdatum aus Jahr und Monat erstellen und den monatlichen Durchschnitt berechnen
-relevant_df_ankuenfte['Datum'] = pd.to_datetime(relevant_df_ankuenfte[['Jahr', 'Monat',]].astype(str).apply('-'.join, 1) + '-01')
+# 2. Anzahl der Tage im Monat berechnen und Durchschnitt pro Tag berechnen
+ankuenfte['days_in_month'] = ankuenfte['Datum'].dt.days_in_month
+ankuenfte['avg_Ankuenfte_ins_absolut'] = ankuenfte['Ankuenfte_ins_absolut'] / ankuenfte['days_in_month']
+ankuenfte['avg_uebernachtungen_ins_absolut'] = ankuenfte['uebernachtungen_ins_absolut'] / ankuenfte['days_in_month']
 
-# 3. Berechnung des monatlichen Durchschnitts für jeden Tag im Monat
-relevant_df_ankuenfte = relevant_df_ankuenfte.set_index('Datum').resample('D').mean().reset_index()
+# 3. Erstellen eines DataFrame mit täglichen Daten für jeden Tag im Monat
+ankuenfte_daily = pd.DataFrame()
+for index, row in ankuenfte.iterrows():
+    days_in_month = row['days_in_month']
+    daily_data = pd.DataFrame({
+        'Datum': pd.date_range(start=row['Datum'], periods=days_in_month, freq='D'),
+        'avg_Ankuenfte_ins_absolut': row['avg_Ankuenfte_ins_absolut'],
+        'avg_uebernachtungen_ins_absolut': row['avg_uebernachtungen_ins_absolut']
+    })
+    ankuenfte_daily = pd.concat([ankuenfte_daily, daily_data])
 
 # Anzeige des Ergebnisses
 print("\nTransformierte Daten:")
-print(relevant_df_ankuenfte)
+print(ankuenfte_daily.head())
+
+# Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
+aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Ankuenfte_daily_Mittelwert.csv'
+ankuenfte_daily.to_csv(aktualisierte_csv_datei, index=False)
+
+## Ermitteln des Einflusses der Ankuenfte auf den Umsatz
