@@ -14,6 +14,9 @@ print(passagieraufkommen.head())
 # 2. Entfernen der unerwünschten Spalten
 passagieraufkommen = passagieraufkommen.drop(columns=['pas_faehrverkehr_relativ', 'pas_ausflugsverkehr_relativ', 'pas_kreuzfahrt_relativ'])
 
+# Konvertieren der Jahr-Spalte in ein datetime-Objekt für die Datumserstellung
+# passagieraufkommen['Jahr'] = pd.to_datetime(passagieraufkommen['Jahr'], format='%Y')
+
 # 3. Liste der Spalten, deren Werte aufgeteilt werden sollen
 spalten_zu_teilen = ['Passagiere_ins_abs', 'pas_faehrverkehr_absolut', 'pas_ausflugsverkehr_absolut', 'pas_kreuzfahrt_absolut', 'anzahl_Kreuzfahrtschiff_absolut']
 
@@ -40,5 +43,5 @@ datum_zum_loeschen = '2019-08-01'
 passagieraufkommen_daily = passagieraufkommen_daily[passagieraufkommen_daily['Datum'] < datum_zum_loeschen]
 
 # Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
-aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Passagieraufkommen_daily.csv'
+aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Passagieraufkommen_daily_.csv'
 passagieraufkommen_daily.to_csv(aktualisierte_csv_datei, index=False)
