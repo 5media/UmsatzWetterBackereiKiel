@@ -59,6 +59,8 @@ print(faehrverkehr_daily.head())
 # 6. Löschen aller Zeilen ab Datum '2019-08-01' [da außerhalb des Zeitraums]
 datum_zum_loeschen = '2019-08-01'
 faehrverkehr_daily = faehrverkehr_daily[faehrverkehr_daily['Datum'] < datum_zum_loeschen]
+datum_zum_loeschen_2 = '2013-04-29'
+faehrverkehr_daily = faehrverkehr_daily[faehrverkehr_daily['Datum'] > datum_zum_loeschen_2]
 
 # Letzte Spalte bestimmen
 last_column = faehrverkehr_daily.columns[-1]
