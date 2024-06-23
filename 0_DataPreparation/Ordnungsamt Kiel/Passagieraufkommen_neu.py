@@ -41,6 +41,9 @@ print(passagieraufkommen_daily.head())
 # 6. Löschen aller Zeilen ab Datum '2019-08-01' [da außerhalb des Zeitraums]
 datum_zum_loeschen = '2019-08-01'
 passagieraufkommen_daily = passagieraufkommen_daily[passagieraufkommen_daily['Datum'] < datum_zum_loeschen]
+datum_zum_loeschen_2 = '2013-04-29'
+passagieraufkommen_daily = passagieraufkommen_daily[passagieraufkommen_daily['Datum'] > datum_zum_loeschen_2]
+print(passagieraufkommen_daily.head())
 
 # Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
 aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Passagieraufkommen_daily.csv'
