@@ -41,6 +41,9 @@ print(fremdenverkehr_var2_daily.head())
 # 6. Löschen aller Zeilen ab Datum '2019-08-01' [da außerhalb des Zeitraums]
 datum_zum_loeschen = '2019-08-01'
 fremdenverkehr_var2_daily = fremdenverkehr_var2_daily[fremdenverkehr_var2_daily['Datum'] < datum_zum_loeschen]
+datum_zum_loeschen_2 = '2013-04-29'
+fremdenverkehr_var2_daily = fremdenverkehr_var2_daily[fremdenverkehr_var2_daily['Datum'] > datum_zum_loeschen_2]
+print(fremdenverkehr_var2_daily.head())
 
 # 7. Speichern des aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
 pfad_zur_ausgabedatei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/Fremdenverkehr_Var2_daily.csv'
