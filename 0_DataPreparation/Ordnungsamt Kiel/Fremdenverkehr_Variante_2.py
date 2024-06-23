@@ -11,7 +11,7 @@ print("Erste Zeilen der Daten:")
 print(fremdenverkehr_var2.head())
 
 # 1. Entfernen der letzten Spalte
-fremdenverkehr_var2 = fremdenverkehr_var2.drop(columns=['durchschnittl_aufenthaltsdauer_Tage'])
+fremdenverkehr_var2 = fremdenverkehr_var2.drop(columns=['durchschnittl_aufenthaltsdauer_Tage', 'gaeste_ankuenfte'])
 
 # 2. Erstellen der täglichen Daten
 fremdenverkehr_var2['Zeitraum_von'] = pd.to_datetime(fremdenverkehr_var2['Zeitraum_von'])
@@ -27,7 +27,6 @@ for _, row in fremdenverkehr_var2.iterrows():
     for single_date in pd.date_range(start_date, end_date):
         all_data.append({
             'Datum': single_date,
-            'gaeste_ankuenfte': row['gaeste_ankuenfte'] / num_days,
             'uebernachtungen': row['uebernachtungen'] / num_days
         })
 
