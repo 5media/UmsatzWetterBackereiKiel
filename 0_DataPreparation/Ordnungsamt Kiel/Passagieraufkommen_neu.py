@@ -12,13 +12,13 @@ print("Erste Zeilen der Daten:")
 print(passagieraufkommen.head())
 
 # 2. Entfernen der unerwünschten Spalten
-passagieraufkommen = passagieraufkommen.drop(columns=['pas_faehrverkehr_relativ', 'pas_ausflugsverkehr_relativ', 'pas_kreuzfahrt_relativ'])
+passagieraufkommen = passagieraufkommen.drop(columns=['pas_faehrverkehr_relativ', 'pas_ausflugsverkehr_relativ', 'pas_kreuzfahrt_relativ', 'Passagiere_ins_abs', 'anzahl_Kreuzfahrtschiff_absolut'])
 
 # Konvertieren der Jahr-Spalte in ein datetime-Objekt für die Datumserstellung
 # passagieraufkommen['Jahr'] = pd.to_datetime(passagieraufkommen['Jahr'], format='%Y')
 
 # 3. Liste der Spalten, deren Werte aufgeteilt werden sollen
-spalten_zu_teilen = ['Passagiere_ins_abs', 'pas_faehrverkehr_absolut', 'pas_ausflugsverkehr_absolut', 'pas_kreuzfahrt_absolut', 'anzahl_Kreuzfahrtschiff_absolut']
+spalten_zu_teilen = ['pas_faehrverkehr_absolut', 'pas_ausflugsverkehr_absolut', 'pas_kreuzfahrt_absolut']
 
 # 4. Erzeugen der täglichen Datensätze
 all_data = []
