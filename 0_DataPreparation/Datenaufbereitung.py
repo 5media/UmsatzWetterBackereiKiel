@@ -66,5 +66,14 @@ gesamt_fehlende_werte_wetter = wetter_df.isnull().sum().sum()
 print(f'\nGesamtzahl fehlender Werte Wetter: {gesamt_fehlende_werte_wetter}')
 # Ergebnis: Gesamtzahl fehlender Werte ist 0, also alles ok
 
-# Datei als CSV speichern
-# wetter_df.to_csv('bereinigtes_wetter.csv', index=False)
+# Löschen aller Zeilen ab Datum '2019-08-01' und vor '2013-29-04 [da außerhalb des Zeitraums]
+datum_zum_loeschen = '2019-08-01'
+wetter_df = wetter_df[wetter_df['Datum'] < datum_zum_loeschen]
+datum_zum_loeschen_2 = '2013-04-29'
+wetter_df = wetter_df[wetter_df['Datum'] > datum_zum_loeschen_2]
+print(wetter_df.head())
+
+# Speichere den aktualisierten DataFrame als CSV-Datei im entsprechenden Ordner
+aktualisierte_csv_datei = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Ordnungsamt Kiel/CSV/' + 'Wetterdaten_bereinigt.csv'
+wetter_df.to_csv(aktualisierte_csv_datei, index=False)
+
