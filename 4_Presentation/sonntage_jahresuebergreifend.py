@@ -24,7 +24,9 @@ def calculate_confidence_interval(data, confidence=0.95):
     n = len(a)
     m, se = np.mean(a), stats.sem(a)
     h = se * stats.t.ppf((1 + confidence) / 2., n-1)
-    return m, m-h, m+h
+    lower = np.maximum(0, m - h)  # Setze den unteren Grenzwert auf 0
+    upper = m + h
+    return m, lower, upper
 
 # Berechne Konfidenzintervalle für jeden Monat über alle Jahre
 months = range(1, 13)  # Monate von 1 bis 12
