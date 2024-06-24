@@ -35,4 +35,3 @@ merged_sonntage['Verkaufsoffen'] = merged_sonntage['Verkaufsoffen'].astype(int)
 output_file_path = '/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/Variablen_CSV/sonntage.csv'
 merged_sonntage.to_csv(output_file_path, index=False)
 
-print("Die Datei wurde erfolgreich erstellt und gespeichert.")
