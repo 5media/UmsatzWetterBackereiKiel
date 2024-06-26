@@ -52,8 +52,8 @@ plt.bar(month_names,
 
 # Diagramm anpassen
 plt.xlabel('Monat')
-plt.ylabel('Durchschnittlich Verkaufsoffen')
-plt.title('Durchschnittlich Verkaufsoffen an Sonntagen pro Monat mit Konfidenzintervallen über alle Jahre')
+plt.ylabel('Durchschnittliche Anzahl an verkaufsoffenen Sonntagen')
+plt.title('Variable: verkaufsoffene Sonntage')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
