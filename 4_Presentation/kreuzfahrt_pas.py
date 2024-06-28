@@ -50,8 +50,8 @@ plt.bar(month_names,
 
 # Diagramm anpassen
 plt.xlabel('Monat')
-plt.ylabel('Durchschnittlich Passagieraufkommen (Kreuzfahrt)')
-plt.title('Durchschnittlich Passagieraufkommen im Kreuzfahrtverkehr pro Monat mit Konfidenzintervallen über alle Jahre')
+plt.ylabel('Durchschnittliche Anzahl an Kreuzfahrtpassagiere')
+plt.title('Variable: Kreuzfahrtpassagiere')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()

@@ -44,3 +44,7 @@ plt.title('Durchschnittlicher Umsatz je Warengruppe mit Konfidenzintervallen')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+
+# Grafik speichern
+#plt.savefig(f'Durchschnittlicher_Umsatz_Warengruppe.png')
