@@ -37,4 +37,4 @@ Regression
 
 ## Cover Image
 
-![](CoverImage/Room_1_Praesentation.PNG)
+![](CoverImage/Room_1_Praesentation.png)
