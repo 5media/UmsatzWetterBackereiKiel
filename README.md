@@ -35,4 +35,4 @@ Regression
 
 ## Cover Image
 
-![](/workspaces/UmsatzWetterBackereiKiel/CoverImage/Room_1_Praesentation.PNG)
+![](/CoverImage/Room_1_Praesentation.PNG)
