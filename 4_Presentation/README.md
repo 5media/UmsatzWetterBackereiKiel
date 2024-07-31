@@ -29,10 +29,10 @@ Regression
 
 ## Documentation
 
-1.  [**Data Import and Preparation**](0_DataPreparation/)
-3.  [**Dataset Characteristics (Barcharts)**](1_DatasetCharacteristics/)
-4.  [**Baseline Model**](2_BaselineModel/)
-5.  [**Model Definition and Evaluation**](3_Model/)
+1.  [**Data Import and Preparation**](/workspaces/UmsatzWetterBackereiKiel/0_DataPreparation/)
+3.  [**Dataset Characteristics (Barcharts)**](/workspaces/UmsatzWetterBackereiKiel/1_DatasetCharacteristics/)
+4.  [**Baseline Model**](/workspaces/UmsatzWetterBackereiKiel/2_BaselineModel/)
+5.  [**Model Definition and Evaluation**](/workspaces/UmsatzWetterBackereiKiel/3_Model/)
 6.  [**Presentation**](4_Presentation/README.md)
 
 ## Cover Image
