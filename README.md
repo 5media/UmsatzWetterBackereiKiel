@@ -2,7 +2,6 @@
 
 ## Repository Link
 
-https://github.com/your_username/your_project_name
 https://github.com/5media/UmsatzWetterBackereiKiel
 
 
@@ -36,4 +35,4 @@ Regression
 
 ## Cover Image
 
-![](CoverImage/cover_image.png)
+![](/workspaces/UmsatzWetterBackereiKiel/CoverImage/Room_1_Praesentation.PNG)
