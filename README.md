@@ -18,12 +18,12 @@ Regression
 -   **Best Model:** [Name of the best-performing model]
 -   **Evaluation Metric:** MAPE
 -   **Result by Category** (Identifier):
-    -   **Bread** (1): [0.20424454625968783]%
-    -   **Rolls** (2): [0.11286234466723148]%
-    -   **Croissant** (3): [0.16771454375571693]%
-    -   **Confectionery** (4): [0.22145290658313532]%
-    -   **Cake** (5): [0.15338625252814123]%
-    -   **Seasonal Bread** (6): [0.6264728894753545]%
+    -   **Bread** (1): 20.42%
+    -   **Rolls** (2): 11.29%
+    -   **Croissant** (3): 16.77%
+    -   **Confectionery** (4): 22.15%
+    -   **Cake** (5): 15.34%
+    -   **Seasonal Bread** (6): 62.65%
 
 ## Documentation
 
